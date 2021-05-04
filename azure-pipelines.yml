@@ -20,6 +20,7 @@ steps:
     npm run build
   displayName: 'npm install and build'
 
+
 - script: |
     # By convention, we expose api specifications using files
     #  in form api_<api-name>.yaml in the root of this project
