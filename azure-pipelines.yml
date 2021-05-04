@@ -24,7 +24,7 @@ steps:
     echo "abc" | echo "def"
 
 - script: |
-    npx oval validate -p $apispec | echo "ok"
+    npx oval validate -p $api_auth.yaml | echo "ok"
 
 - script: |
     # By convention, we expose api specifications using files
