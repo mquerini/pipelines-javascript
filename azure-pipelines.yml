@@ -20,6 +20,8 @@ steps:
     npm run build
   displayName: 'npm install and build'
 
+- script: |
+    echo "abc" | echo "def"
 
 - script: |
     # By convention, we expose api specifications using files
