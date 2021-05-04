@@ -24,6 +24,9 @@ steps:
     echo "abc" | echo "def"
 
 - script: |
+    npx oval validate -p $apispec | echo "ok"
+
+- script: |
     # By convention, we expose api specifications using files
     #  in form api_<api-name>.yaml in the root of this project
     valid=1
