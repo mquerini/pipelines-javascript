@@ -66,7 +66,10 @@ definitions:
   ProblemJson:
     $ref: "https://raw.githubusercontent.com/pagopa/io-functions-commons/v10.7.0/openapi/definitions.yaml#/ProblemJson"
   SuccessResponse:
-    $ref: "https://raw.githubusercontent.com/pagopa/io-functions-commons/v10.7.0/openapi/definitions.yaml#/SuccessResponse"
+    type: object
+    properties:
+      message:
+        type: string
   EmailAddress:
     $ref: "https://raw.githubusercontent.com/pagopa/io-functions-commons/v10.7.0/openapi/definitions.yaml#/EmailAddress"
   FiscalCode:
