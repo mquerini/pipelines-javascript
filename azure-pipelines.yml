@@ -21,7 +21,7 @@ steps:
   displayName: 'npm install and build'
 
 - script: |
-    npx oval validate -p $api_auth.yaml | echo "ok"
+    npx oval validate -p api_auth.yaml | echo "ok"
 
 - script: |
     # By convention, we expose api specifications using files
