@@ -21,9 +21,6 @@ steps:
   displayName: 'npm install and build'
 
 - script: |
-    echo "abc" | echo "def"
-
-- script: |
     npx oval validate -p $api_auth.yaml | echo "ok"
 
 - script: |
