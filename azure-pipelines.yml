@@ -37,6 +37,7 @@ steps:
     displayName: 'Validate API specifications'
 
 
+
 - script: |
     # By convention, we expose api specifications using files
     #  in form api_<api-name>.yaml in the root of this project
