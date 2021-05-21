@@ -31,6 +31,9 @@ steps:
     #  in form api_<api-name>.yaml in the root of this project
     valid=1
     for apispec in $(ls api_*.yaml); do
+
+      echo $apispec
+
       echo "validating $apispec"
       npx oval validate -p $apispec
       result=$?
