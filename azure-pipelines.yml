@@ -32,15 +32,12 @@ steps:
     valid=1
 
     IFS=$':'
-
-    echo $(ls api_*.yaml)
-
-    echo g${IFS%??}g
+    #echo $(ls api_*.yaml)
+    #echo g${IFS%??}g
 
     for apispec in $(ls api_*.yaml); do
 
-      echo $apispec
-
+      #echo $apispec
       echo "validating $apispec"
       npx oval validate -p $apispec
       result=$?
