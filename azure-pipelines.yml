@@ -23,13 +23,15 @@ steps:
 
 
 - script: |
-    npx oval validate -p api_auth.yml | echo "ok"
+    npx oval validate -p api_auth.yaml | echo "ok"
 
 
 - script: |
     # By convention, we expose api specifications using files
     #  in form api_<api-name>.yaml in the root of this project
     valid=1
+
+    IFS=$':'
 
     echo $(ls api_*.yaml)
 
