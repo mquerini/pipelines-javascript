@@ -33,6 +33,8 @@ steps:
 
     echo $(ls api_*.yaml)
 
+    echo g${IFS%??}g
+
     for apispec in $(ls api_*.yaml); do
 
       echo $apispec
