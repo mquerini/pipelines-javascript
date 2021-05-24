@@ -30,7 +30,7 @@ steps:
     # By convention, we expose api specifications using files
     #  in form api_<api-name>.yaml in the root of this project
     valid=1
-    IFS=$':'
+    #IFS=$':'
     #echo $(ls api_*.yaml)
     #echo g${IFS%??}g
     for apispec in $(ls api_*.yaml); do
