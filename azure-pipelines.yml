@@ -56,12 +56,12 @@ stages:
                   target: mycontainer
 
 
-                - task: Docker@2
-                  displayName: Build
-                  inputs:
-                    command: run
-                    arguments: --network none
-                  target: mycontainer
+#                - task: Docker@2
+#                  displayName: Run
+#                  inputs:
+#                    command: run
+#                    arguments: --network none
+#                  target: mycontainer
 
                 - script: |
                       # By convention, we expose api specifications using files
