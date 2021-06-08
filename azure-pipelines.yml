@@ -17,7 +17,6 @@ resources:
       image: ubuntu:18.04
       #options: --network none
 
-
 stages:
 #    - stage: Init
 #      dependsOn: []
