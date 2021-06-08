@@ -15,7 +15,7 @@ resources:
   containers:
     - container: mycontainer
       image: ubuntu:18.04
-      options: --name none
+      options: --name none --network none
 
 stages:
 #    - stage: Init
