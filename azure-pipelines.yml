@@ -16,10 +16,10 @@ trigger:
 
 
 stages:
-    - stage: Static_analysis
+    - stage: Init
       dependsOn: []
       jobs:
-          - job: validate_api_specification
+          - job: node
             pool:
                 vmImage: ubuntu-latest
             steps:
