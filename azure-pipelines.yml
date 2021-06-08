@@ -44,17 +44,17 @@ stages:
                 vmImage: ubuntu-latest
 
             steps:
-              - task: NodeTool@0
-                inputs:
-                  versionSpec: '10.x'
-                displayName: 'Install Node.js'
-                target: mycontainer
+                - task: NodeTool@0
+                  inputs:
+                    versionSpec: '10.x'
+                  displayName: 'Install Node.js'
+                  target: mycontainer
 
-              - script: |
-                  npm install
-                  npm run build
-                displayName: 'npm install and build'
-                target: mycontainer
+                - script: |
+                   npm install
+                   npm run build
+                  displayName: 'npm install and build'
+                  target: mycontainer
 
 
                 - script: |
