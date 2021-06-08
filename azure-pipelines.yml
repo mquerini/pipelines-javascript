@@ -59,4 +59,4 @@ stages:
                       done
                       [[ $valid = 1 ]] && exit 0 || exit 1
                   displayName: 'Validate API specifications'
-                  target: mycontainer
+#                  target: mycontainer
