@@ -15,7 +15,7 @@ resources:
   containers:
     - container: mycontainer
       image: ubuntu:18.04
-      options: --hostname container-test --ip 192.168.0.1
+      options: --hostname container-test --network none
 
 
 stages:
