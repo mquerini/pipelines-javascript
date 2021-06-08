@@ -11,8 +11,11 @@ trigger:
 # https://docs.microsoft.com/en-us/azure/devops/pipelines/process/container-phases?view=azure-devops#options
 
 
-
-
+resources:
+  containers:
+    - container: mycontainer
+      image: ubuntu:18.04
+      options: --hostname container-test --ip 192.168.0.1
 
 
 stages:
@@ -56,3 +59,4 @@ stages:
                       done
                       [[ $valid = 1 ]] && exit 0 || exit 1
                   displayName: 'Validate API specifications'
+                  target: mycontainer
