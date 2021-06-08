@@ -10,6 +10,7 @@ trigger:
 # https://docs.docker.com/network/none/
 # https://docs.microsoft.com/en-us/azure/devops/pipelines/process/container-phases?view=azure-devops#options
 
+
 stages:
     - stage: Static_analysis
       dependsOn: []
@@ -18,16 +19,16 @@ stages:
             pool:
                 vmImage: ubuntu-latest
 
-            steps:
+            - steps:
                 - task: NodeTool@0
                   inputs:
-                    versionSpec: '10.x'
+                     versionSpec: '10.x'
                   displayName: 'Install Node.js'
 
                 - script: |
-                   npm install
-                   npm run build
-                displayName: 'npm install and build'
+                    npm install
+                    npm run build
+                  displayName: 'npm install and build'
     - stage: Static_analysis
       dependsOn: []
       jobs:
