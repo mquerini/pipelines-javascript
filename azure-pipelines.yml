@@ -6,7 +6,6 @@
 trigger:
 - master
 
-
 # https://docs.microsoft.com/en-us/azure/devops/pipelines/process/container-phases?view=azure-devops
 # https://docs.docker.com/network/none/
 # https://docs.microsoft.com/en-us/azure/devops/pipelines/process/container-phases?view=azure-devops#options
@@ -21,9 +20,9 @@ stages:
 
             steps:
                 - task: NodeTool@0
-                inputs:
+                  inputs:
                     versionSpec: '10.x'
-                displayName: 'Install Node.js'
+                  displayName: 'Install Node.js'
 
                 - script: |
                    npm install
