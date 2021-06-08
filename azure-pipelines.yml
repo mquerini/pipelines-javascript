@@ -7,8 +7,7 @@ trigger:
 - master
 
 
-pool:
-  vmImage: ubuntu-latest
+
 
 steps:
 - task: NodeTool@0
@@ -33,6 +32,8 @@ stages:
       dependsOn: []
       jobs:
           - job: validate_api_specification
+            pool:
+                vmImage: ubuntu-latest
             steps:
                 - script: |
                       # By convention, we expose api specifications using files
