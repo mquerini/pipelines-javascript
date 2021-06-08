@@ -19,22 +19,22 @@ resources:
 
 
 stages:
-    - stage: Init
-      dependsOn: []
-      jobs:
-          - job: node
-            pool:
-                vmImage: ubuntu-latest
-            steps:
-                 - task: NodeTool@0
-                   inputs:
-                     versionSpec: '10.x'
-                   displayName: 'Install Node.js'
-
-                 - script: |
-                    npm install
-                    npm run build
-                   displayName: 'npm install and build'
+#    - stage: Init
+#      dependsOn: []
+#      jobs:
+#          - job: node
+#            pool:
+#                vmImage: ubuntu-latest
+#            steps:
+#                 - task: NodeTool@0
+#                   inputs:
+#                     versionSpec: '10.x'
+#                   displayName: 'Install Node.js'
+#
+#                 - script: |
+#                    npm install
+#                    npm run build
+#                   displayName: 'npm install and build'
 
     - stage: Static_analysis
       dependsOn: []
@@ -44,6 +44,19 @@ stages:
                 vmImage: ubuntu-latest
 
             steps:
+              - task: NodeTool@0
+                inputs:
+                  versionSpec: '10.x'
+                displayName: 'Install Node.js'
+                target: mycontainer
+
+              - script: |
+                  npm install
+                  npm run build
+                displayName: 'npm install and build'
+                target: mycontainer
+
+
                 - script: |
                       # By convention, we expose api specifications using files
                       #  in form api_<api-name>.yaml in the root of this project
@@ -59,4 +72,4 @@ stages:
                       done
                       [[ $valid = 1 ]] && exit 0 || exit 1
                   displayName: 'Validate API specifications'
-#                  target: mycontainer
+                  target: mycontainer
