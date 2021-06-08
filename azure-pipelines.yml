@@ -23,25 +23,29 @@ steps:
 
 
 
-- script: |
-    npx oval validate -p api_auth.yaml | echo "ok"
 
-- script: |
-    # By convention, we expose api specifications using files
-    #  in form api_<api-name>.yaml in the root of this project
-    valid=1
-    #IFS=$':'
-    #echo $(ls api_*.yaml)
-    #echo g${IFS%??}g
-    for apispec in $(ls api_*.yaml); do
-      #echo $apispec
-      echo "validating $apispec"
-      npx oval validate -p $apispec
-      result=$?
-      if [ ! $result = 0 ]; then
-        valid=0
-        echo "$apispec failed with code $result"
-      fi
-    done
-    [[ $valid = 1 ]] && exit 0 || exit 1
-    displayName: 'Validate API specifications'
+# https://docs.microsoft.com/en-us/azure/devops/pipelines/process/container-phases?view=azure-devops
+# https://docs.docker.com/network/none/
+# https://docs.microsoft.com/en-us/azure/devops/pipelines/process/container-phases?view=azure-devops#options
+
+stages:
+    - stage: Static_analysis
+      dependsOn: []
+      jobs:
+          - job: validate_api_specification
+            steps:
+                - script: |
+                      # By convention, we expose api specifications using files
+                      #  in form api_<api-name>.yaml in the root of this project
+                      valid=1
+                      for apispec in $(ls api_*.yaml); do
+                        echo "validating $apispec"
+                        npx oval validate -p $apispec
+                        result=$?
+                        if [ ! $result = 0 ]; then
+                          valid=0
+                          echo "$apispec failed with code $result"
+                        fi
+                      done
+                      [[ $valid = 1 ]] && exit 0 || exit 1
+                  displayName: 'Validate API specifications'
