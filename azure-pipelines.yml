@@ -15,7 +15,7 @@ resources:
   containers:
     - container: mycontainer
       image: ubuntu-latest
-      options: --network none
+      #options: --network none
 
 
 stages:
@@ -51,6 +51,7 @@ stages:
                   target: mycontainer
 
                 - script: |
+                   docker create --help
                    npm install
                    npm run build
                   displayName: 'npm install and build'
