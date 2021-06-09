@@ -47,7 +47,8 @@ stages:
 
             steps:
 
-                - script: docker network disconnect mynet mycontainer12
+                 - script: docker inspect mycontainer1 -f "{{json .NetworkSettings.Networks }}"
+                #- script: docker network disconnect mynet mycontainer1
                   target: host # reserved name for the host the worker is running on
 
                 - task: NodeTool@0
