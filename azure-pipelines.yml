@@ -39,22 +39,24 @@ stages:
       dependsOn: []
       jobs:
           - job: validate_api_specification
-            pool:
-                vmImage: ubuntu-latest
+            #pool:
+            #    vmImage: ubuntu-latest
+            container:
+              mycontainer
 
             steps:
                 - task: NodeTool@0
                   inputs:
                     versionSpec: '10.x'
                   displayName: 'Install Node.js'
-                  target: mycontainer
+ #                 target: mycontainer
 
                 - script: |
                    docker create --help
                    npm install
                    npm run build
                   displayName: 'npm install and build'
-                  target: mycontainer
+ #                 target: mycontainer
 
 
 #                - task: Docker@2
@@ -79,4 +81,4 @@ stages:
                       done
                       [[ $valid = 1 ]] && exit 0 || exit 1
                   displayName: 'Validate API specifications'
-                  target: mycontainer
+ #                 target: mycontainer
