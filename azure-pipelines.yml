@@ -16,6 +16,7 @@ resources:
     - container: mycontainer
       image: ubuntu:18.04
 
+
 stages:
 #    - stage: Init
 #      dependsOn: []
