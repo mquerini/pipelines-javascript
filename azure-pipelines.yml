@@ -9,7 +9,7 @@ trigger:
 # https://docs.microsoft.com/en-us/azure/devops/pipelines/process/container-phases?view=azure-devops
 # https://docs.docker.com/network/none/
 # https://docs.microsoft.com/en-us/azure/devops/pipelines/process/container-phases?view=azure-devops#options
-
+# https://github.com/microsoft/azure-pipelines-yaml/blob/master/design/step-target.md
 
 resources:
   containers:
@@ -38,36 +38,35 @@ stages:
     - stage: Static_analysis
       dependsOn: []
       jobs:
-          - job: install
+          - job: validate
             #pool:
             #    vmImage: ubuntu-latest
-            container:
-              mycontainer
+            #container:
+            #  mycontainer
 
             steps:
+
+                - script: docker network disconnect <job network> <job container>
+                  target: host # reserved name for the host the worker is running on
+
                 - task: NodeTool@0
                   inputs:
                     versionSpec: '10.x'
                   displayName: 'Install Node.js'
- #                 target: mycontainer
+                  target: mycontainer
 
                 - script: |
                    npm install
                    npm run build
                   displayName: 'npm install and build'
- #                 target: mycontainer
+                  target: mycontainer
 
+                - script: |
+                    npm install
+                    npm run build
+                  displayName: 'npm install and build'
+                  target: mycontainer
 
-
-
-
-          - job: validate_api_specification
-            #pool:
-            #    vmImage: ubuntu-latest
-            container:
-              mycontainer
-
-            steps:
                 - script: |
                       # By convention, we expose api specifications using files
                       #  in form api_<api-name>.yaml in the root of this project
@@ -83,4 +82,4 @@ stages:
                       done
                       [[ $valid = 1 ]] && exit 0 || exit 1
                   displayName: 'Validate API specifications'
- #                 target: mycontainer
+                  target: mycontainer
