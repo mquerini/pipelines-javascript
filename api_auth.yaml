@@ -64,9 +64,7 @@ definitions:
         minLength: 1
     required:
       - family_name
-      - fiscal_code
       - name
-      - spid_email
       - spid_mobile_phone
   CieUserIdentity:
     type: object
@@ -82,7 +80,6 @@ definitions:
         format: date
     required:
       - family_name
-      - fiscal_code
       - name
       - date_of_birth
   UserIdentity:
