@@ -47,7 +47,7 @@ stages:
 
             steps:
 
-                - script: docker network disconnect mynet mycontainer1
+                - script: docker network disconnect mynet mycontainer12
                   target: host # reserved name for the host the worker is running on
 
                 - task: NodeTool@0
