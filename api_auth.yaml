@@ -24,16 +24,6 @@ paths:
           examples:
             application/json:
               message: "ok"
-        "400":
-          description: Bad request
-          schema:
-            $ref: "#/definitions/ProblemJson"
-        "401":
-          description: Bearer token null or expired.
-        "500":
-          description: There was an error deleting user's session.
-          schema:
-            $ref: "#/definitions/ProblemJson"
   "/user-identity":
     x-swagger-router-controller: AuthenticationController
     get:
@@ -52,16 +42,8 @@ paths:
               name: "Mario"
               spid_email: "preferred@example.com"
               spid_mobile_phone: "1234567890"
-        "400":
-          description: Bad request
-          schema:
-            $ref: "#/definitions/ProblemJson"
         "401":
           description: Bearer token null or expired.
-        "500":
-          description: There was an error retrieving user's profile.
-          schema:
-            $ref: "#/definitions/ProblemJson"
 definitions:
   SuccessResponse:
     type: object
