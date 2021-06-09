@@ -38,7 +38,7 @@ stages:
     - stage: Static_analysis
       dependsOn: []
       jobs:
-          - job: validate_api_specification
+          - job: install
             #pool:
             #    vmImage: ubuntu-latest
             container:
@@ -52,20 +52,22 @@ stages:
  #                 target: mycontainer
 
                 - script: |
-                   docker create --help
                    npm install
                    npm run build
                   displayName: 'npm install and build'
  #                 target: mycontainer
 
 
-#                - task: Docker@2
-#                  displayName: Run
-#                  inputs:
-#                    command: run
-#                    arguments: --network none
-#                  target: mycontainer
 
+
+
+          - job: validate_api_specification
+            #pool:
+            #    vmImage: ubuntu-latest
+            container:
+              mycontainer
+
+            steps:
                 - script: |
                       # By convention, we expose api specifications using files
                       #  in form api_<api-name>.yaml in the root of this project
