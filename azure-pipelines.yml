@@ -55,15 +55,11 @@ stages:
 
                 - script: |
                    npm install
+                   npm install -g oval
                    npm run build
                   displayName: 'npm install and build'
                   target: mycontainer
 
-                - script: |
-                    npm install
-                    npm run build
-                  displayName: 'npm install and build'
-                  target: mycontainer
 
 
                 - script: docker inspect mycontainer1 -f "{{json .NetworkSettings.Networks }}" | cut -c3-47
