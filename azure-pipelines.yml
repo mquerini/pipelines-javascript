@@ -47,12 +47,6 @@ stages:
 
             steps:
 
-                - script: docker inspect mycontainer1 -f "{{json .NetworkSettings.Networks }}" | cut -c3-47
-                  target: host # reserved name for the host the worker is running on
-
-                - script: docker network disconnect $(docker inspect mycontainer1 -f "{{json .NetworkSettings.Networks }}" | cut -c3-47) mycontainer1
-                  target: host # reserved name for the host the worker is running on
-
                 - task: NodeTool@0
                   inputs:
                     versionSpec: '10.x'
@@ -70,6 +64,14 @@ stages:
                     npm run build
                   displayName: 'npm install and build'
                   target: mycontainer
+
+
+                - script: docker inspect mycontainer1 -f "{{json .NetworkSettings.Networks }}" | cut -c3-47
+                  target: host # reserved name for the host the worker is running on
+
+                - script: docker network disconnect $(docker inspect mycontainer1 -f "{{json .NetworkSettings.Networks }}" | cut -c3-47) mycontainer1
+                  target: host # reserved name for the host the worker is running on
+
 
                 - script: |
                       # By convention, we expose api specifications using files
