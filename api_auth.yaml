@@ -57,12 +57,8 @@ definitions:
     properties:
       family_name:
         type: string
-      fiscal_code:
-        $ref: '#/definitions/FiscalCode'
       name:
         type: string
-      spid_email:
-        $ref: '#/definitions/EmailAddress'
       spid_mobile_phone:
         type: string
         minLength: 1
@@ -79,8 +75,6 @@ definitions:
     properties:
       family_name:
         type: string
-      fiscal_code:
-        $ref: '#/definitions/FiscalCode'
       name:
         type: string
       date_of_birth:
