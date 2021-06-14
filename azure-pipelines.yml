@@ -10,6 +10,7 @@ trigger:
 # https://docs.docker.com/network/none/
 # https://docs.microsoft.com/en-us/azure/devops/pipelines/process/container-phases?view=azure-devops#options
 # https://github.com/microsoft/azure-pipelines-yaml/blob/master/design/step-target.md
+# https://github.com/microsoft/azure-pipelines-yaml/blob/master/design/step-target-restricted-mode.md
 
 resources:
   containers:
@@ -64,4 +65,6 @@ stages:
                       done
                       [[ $valid = 1 ]] && exit 0 || exit 1
                   displayName: 'Validate API specifications'
-                  target: mycontainer
+                  target:
+                      container: mycontainer
+                      commands: restricted
