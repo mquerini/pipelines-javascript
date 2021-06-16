@@ -15,8 +15,9 @@ jobs:
               fi
             done
             [[ $valid = 1 ]] && exit 0 || exit 1
-            displayName: 'Validate API specifications'
+          displayName: 'Validate API specifications'
   - job: job2
-    steps:
-      - script: |
-          ping www.google.com
+    - task: CmdLine@2
+       displayName: Curl Example
+       inputs:
+         script: 'curl google.com'
