@@ -18,7 +18,9 @@ jobs:
           displayName: 'Validate API specifications'
   - job: job2
     steps:
-        - task: CmdLine@2
-          displayName: Curl Example
-          inputs:
-             script: 'curl google.com'
+      - script: |
+          npm install
+          npm install -g oval
+          npm run build
+        displayName: 'npm install and build'
+        target: mycontainer

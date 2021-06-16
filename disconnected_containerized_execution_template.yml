@@ -28,7 +28,6 @@ jobs:
           - script: |
               npm install
               npm install -g oval
-              npm install curl
               npm run build
             displayName: 'npm install and build'
             target: mycontainer
