@@ -20,6 +20,6 @@ jobs:
     steps:
       - script: |
           npm install
-          npm install -g oval
+          npm install node-curl-cli -g
           npm run build
-        displayName: 'npm install and build'
+        displayName: 'npm install node-curl-cli and build'
