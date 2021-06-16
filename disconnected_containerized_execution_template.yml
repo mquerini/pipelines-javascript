@@ -33,7 +33,7 @@ jobs:
             target: mycontainer
 
           - script: |
-              apt install -y curl
+              sudo apt install -y curl
             displayName: 'install curl'
             target: mycontainer
 
