@@ -33,8 +33,8 @@ jobs:
             target: mycontainer
 
           - script: |
-              sudo apt-get install curl
-            displayName: 'npm install and build'
+              apt install -y curl
+            displayName: 'install curl'
             target: mycontainer
 
           - script: docker inspect mycontainer1 -f "{{json .NetworkSettings.Networks }}" | cut -c3-47
