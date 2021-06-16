@@ -17,8 +17,7 @@ extends:
   template: disconnected_containerized_execution_template.yml
   parameters:
     jobs:
-      - job: validate
-
+      - job:
           - script: |
               # By convention, we expose api specifications using files
               #  in form api_<api-name>.yaml in the root of this project
