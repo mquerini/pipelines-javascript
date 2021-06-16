@@ -41,5 +41,7 @@ jobs:
           - ${{ each step in job.steps }}:                # Users steps
               - ${{ each p in step }}:
                   ${{ p.key }}: ${{ p.value }}
-
+                target:
+                  container: mycontainer
+                  commands: restricted
 
