@@ -17,18 +17,11 @@ resources:
     - container: mycontainer
       image: ubuntu:20.04
       options: --name mycontainer1
-  repositories:
-    - repository: pagopaCommons
-      type: github
-      name: pagopa/azure-pipeline-templates
-      ref: refs/tags/v8
-      endpoint: 'pagopa'
 
 
 
 
 stages:
-
     - stage: Static_analysis
       dependsOn: []
       jobs:
@@ -40,27 +33,18 @@ stages:
 
             steps:
 
-#                - task: NodeTool@0
-#                  inputs:
-#                    versionSpec: '10.x'
-#                  displayName: 'Install Node.js'
-#                  target: mycontainer
-#
-#                - script: |
-#                   npm install
-#                   npm install -g oval
-#                   npm run build
-#                  displayName: 'npm install and build'
-#                  target: mycontainer
+                - task: NodeTool@0
+                  inputs:
+                    versionSpec: '10.x'
+                  displayName: 'Install Node.js'
+                  target: mycontainer
 
-
-
-                - template: templates/node-job-setup/template.yaml@pagopaCommons
                 - script: |
-                   yarn build
-                  displayName: 'Build'
-
-
+                   npm install
+                   npm install -g oval
+                   npm run build
+                  displayName: 'npm install and build'
+                  target: mycontainer
 
 
                 - script: docker inspect mycontainer1 -f "{{json .NetworkSettings.Networks }}" | cut -c3-47
