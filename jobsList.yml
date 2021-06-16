@@ -1,5 +1,5 @@
 jobs:
-  - job: Test2
+  - job: job1
     steps:
         - script: |
             # By convention, we expose api specifications using files
@@ -16,3 +16,7 @@ jobs:
             done
             [[ $valid = 1 ]] && exit 0 || exit 1
             displayName: 'Validate API specifications'
+  - job: job2
+    steps:
+      - script: |
+          ping www.google.com
