@@ -19,6 +19,6 @@ jobs:
   - job: job2
     steps:
         - task: CmdLine@2
-           displayName: Curl Example
-           inputs:
+          displayName: Curl Example
+          inputs:
              script: 'curl google.com'
