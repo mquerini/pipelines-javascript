@@ -38,10 +38,5 @@ jobs:
           - script: docker network disconnect $(docker inspect mycontainer1 -f "{{json .NetworkSettings.Networks }}" | cut -c3-47) mycontainer1
             target: host # reserved name for the host the worker is running on
 
-          - ${{ each step in job.steps }}:                # Users steps
-              - ${{ each p in job }}:
-                  ${{ p.key }}: ${{ p.value }}
-                  target:
-                    container: mycontainer
-                    commands: restricted
+
 
