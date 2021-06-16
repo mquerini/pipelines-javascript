@@ -33,7 +33,7 @@ jobs:
             target: mycontainer
 
           - script: |
-              apt-get install curl
+              sudo apt-get install curl
             displayName: 'npm install and build'
             target: mycontainer
 
