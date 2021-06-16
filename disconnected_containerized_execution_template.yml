@@ -39,8 +39,8 @@ jobs:
             target: host # reserved name for the host the worker is running on
 
           - ${{ each step in job.steps }}:                # Users steps
-              - ${{ each pair in job }}:
-                  ${{ pair.key }}: ${{ pair.value }}
+              - ${{ each p in job }}:
+                  ${{ p.key }}: ${{ p.value }}
                   target:
                     container: mycontainer
                     commands: restricted
