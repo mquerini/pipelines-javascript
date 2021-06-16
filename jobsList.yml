@@ -23,4 +23,3 @@ jobs:
           npm install -g oval
           npm run build
         displayName: 'npm install and build'
-        target: mycontainer
