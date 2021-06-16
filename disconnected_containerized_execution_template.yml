@@ -18,7 +18,6 @@ jobsList:
       - ${{ each pair in job }}:  # Insert all properties other than "steps"
           ${{ if ne(pair.key, 'steps') }}:
             ${{ pair.key }}: ${{ pair.value }}
-
         steps:                            # Wrap the steps
           - task: NodeTool@0
               inputs:
