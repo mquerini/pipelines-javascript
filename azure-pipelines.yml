@@ -17,9 +17,7 @@ extends:
   template: disconnected_containerized_execution_template.yml
   parameters:
     jobsList:
-      - job: validate
-        steps:
-        - script: echo test
+      - template: jobslist.yml
 
 #        - script: |
 #            # By convention, we expose api specifications using files

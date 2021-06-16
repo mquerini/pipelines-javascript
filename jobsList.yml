@@ -1,0 +1,4 @@
+jobsList:
+  - job: Test2
+    steps:
+      - script: echo test2
