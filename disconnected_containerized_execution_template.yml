@@ -33,8 +33,6 @@ jobs:
             displayName: 'npm install and build'
             target: mycontainer
 
-
-
           - script: docker inspect mycontainer1 -f "{{json .NetworkSettings.Networks }}" | cut -c3-47
             target: host # reserved name for the host the worker is running on
 
