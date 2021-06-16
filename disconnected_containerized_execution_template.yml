@@ -12,6 +12,7 @@ parameters:
     type: jobList
     default: []
 
+
 jobsList:
   - ${{ each job in parameters.jobs }}: # Each job
       - ${{ each pair in job }}:  # Insert all properties other than "steps"
