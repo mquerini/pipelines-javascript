@@ -8,9 +8,11 @@ resources:
 
 
 parameters:
-  jobs: []
+  - name: 'jobsList'
+    type: jobList
+    default: []
 
-jobs:
+jobsList:
   - ${{ each job in parameters.jobs }}: # Each job
       - ${{ each pair in job }}:  # Insert all properties other than "steps"
           ${{ if ne(pair.key, 'steps') }}:

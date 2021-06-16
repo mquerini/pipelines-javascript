@@ -16,10 +16,11 @@ trigger:
 extends:
   template: disconnected_containerized_execution_template.yml
   parameters:
-    jobs:
+    jobsList:
       - job: validate
         steps:
-        - script: echo "a"
+        - script: echo test
+
 #        - script: |
 #            # By convention, we expose api specifications using files
 #            #  in form api_<api-name>.yaml in the root of this project
