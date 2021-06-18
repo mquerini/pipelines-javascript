@@ -35,7 +35,7 @@ jobs:
 #            target: mycontainer
 
           - script: |
-              - npm install
+              npm install
             displayName: 'npm install'
             target: mycontainer
 
@@ -46,7 +46,7 @@ jobs:
                 container: mycontainer
 
           - script: |
-              - npm run build
+              npm run build
             displayName: 'npm build'
             target: mycontainer
 
