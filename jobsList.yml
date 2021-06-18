@@ -1,3 +1,6 @@
+# We define a list of jobs (to be executed in a container disconnected from Internet
+# in azure-pipelines.yml)
+
 jobs:
   - job: job1
     steps:
