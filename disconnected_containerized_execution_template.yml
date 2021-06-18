@@ -41,9 +41,9 @@ jobs:
 
           - ${{ each prestep in parameters.requiredPreSteps }}:
             - ${{ each ps in prestep }}:
-              ${{ ps.key }}: ${{ ps.value }}
-            target:
-              container: mycontainer
+                ${{ ps.key }}: ${{ ps.value }}
+              target:
+                container: mycontainer
 
           - script: |
               - npm run build
