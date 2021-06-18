@@ -7,12 +7,13 @@ resources:
       image: ubuntu:20.04
       options: --name mycontainer1
 
-
 parameters:
   - name: 'jobsList'
     type: jobList
     default: []
-
+  - name: 'requiredNpmPackagesList'
+    type: []
+    default: []
 
 jobs:
   - ${{ each job in parameters.jobsList }}:      # Process Each job
@@ -26,17 +27,33 @@ jobs:
             displayName: 'Install Node.js'
             target: mycontainer
 
+#          - script: |
+#              npm install
+#              npm install -g oval
+#              npm run build
+#            displayName: 'npm install and build'
+#            target: mycontainer
+
           - script: |
-              npm install
-              npm install -g oval
-              npm run build
-            displayName: 'npm install and build'
+              - npm install
+            displayName: 'npm install'
+            target: mycontainer
+
+          ${{ each package in parameters.requiredNpmPackagesList }}:
+            - script: |
+                - npm install -g ${{ package }}
+              displayName: 'install custom packages'
+              target: mycontainer
+
+          - script: |
+              - npm run build
+            displayName: 'npm build'
             target: mycontainer
 
           - script: docker inspect mycontainer1 -f "{{json .NetworkSettings.Networks }}" | cut -c3-47
             target: host
 
-          # Disconnect the container from Internet using docker network disconnect commmand.
+          # Disconnect the container from Internet using docker network disconnect command.
           - script: docker network disconnect $(docker inspect mycontainer1 -f "{{json .NetworkSettings.Networks }}" | cut -c3-47) mycontainer1
             target: host
 
@@ -46,4 +63,3 @@ jobs:
                 target:
                   container: mycontainer
                   commands: restricted
-
