@@ -39,7 +39,7 @@ jobs:
             displayName: 'npm install'
             target: mycontainer
 
-          ${{ each prestep in parameters.requiredPreSteps }}:
+          - ${{ each prestep in parameters.requiredPreSteps }}:
             - ${{ each p in step }}:
               ${{ p.key }}: ${{ p.value }}
             target:
