@@ -13,5 +13,6 @@ extends:
   parameters:
     jobsList:
       - template: jobsList.yml
-    requiredNpmPackagesList:
-      - oval
+    requiredPreSteps:
+      - script: |
+          npm install -g oval

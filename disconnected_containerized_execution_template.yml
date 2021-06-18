@@ -11,8 +11,8 @@ parameters:
   - name: 'jobsList'
     type: jobList
     default: []
-  - name: 'requiredNpmPackagesList'
-    type: []
+  - name: 'requiredPreSteps'
+    type: stepList
     default: []
 
 jobs:
@@ -39,11 +39,11 @@ jobs:
             displayName: 'npm install'
             target: mycontainer
 
-          ${{ each package in parameters.requiredNpmPackagesList }}:
-            - script: |
-                - npm install -g ${{ package }}
-              displayName: 'install custom packages'
-              target: mycontainer
+          ${{ each prestep in parameters.requiredPreSteps }}:
+            - ${{ each p in step }}:
+              ${{ p.key }}: ${{ p.value }}
+            target:
+              container: mycontainer
 
           - script: |
               - npm run build
