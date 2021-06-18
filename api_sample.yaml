@@ -24,16 +24,6 @@ paths:
           examples:
             application/json:
               message: "ok"
-        "400":
-          description: Bad request
-          schema:
-            $ref: "#/definitions/ProblemJson"
-        "401":
-          description: Bearer token null or expired.
-        "500":
-          description: There was an error deleting user's session.
-          schema:
-            $ref: "#/definitions/ProblemJson"
   "/user-identity":
     x-swagger-router-controller: AuthenticationController
     get:
@@ -52,28 +42,14 @@ paths:
               name: "Mario"
               spid_email: "preferred@example.com"
               spid_mobile_phone: "1234567890"
-        "400":
-          description: Bad request
-          schema:
-            $ref: "#/definitions/ProblemJson"
         "401":
           description: Bearer token null or expired.
-        "500":
-          description: There was an error retrieving user's profile.
-          schema:
-            $ref: "#/definitions/ProblemJson"
 definitions:
-  ProblemJson:
-    $ref: "https://raw.githubusercontent.com/pagopa/io-functions-commons/v10.7.0/openapi/definitions.yaml#/ProblemJson"
   SuccessResponse:
     type: object
     properties:
       message:
         type: string
-  EmailAddress:
-    $ref: "https://raw.githubusercontent.com/pagopa/io-functions-commons/v10.7.0/openapi/definitions.yaml#/EmailAddress"
-  FiscalCode:
-    $ref: "https://raw.githubusercontent.com/pagopa/io-functions-commons/v10.7.0/openapi/definitions.yaml#/FiscalCode"
   SpidUserIdentity:
     type: object
     title: SPID User Identity
@@ -81,20 +57,14 @@ definitions:
     properties:
       family_name:
         type: string
-      fiscal_code:
-        $ref: '#/definitions/FiscalCode'
       name:
         type: string
-      spid_email:
-        $ref: '#/definitions/EmailAddress'
       spid_mobile_phone:
         type: string
         minLength: 1
     required:
       - family_name
-      - fiscal_code
       - name
-      - spid_email
       - spid_mobile_phone
   CieUserIdentity:
     type: object
@@ -103,8 +73,6 @@ definitions:
     properties:
       family_name:
         type: string
-      fiscal_code:
-        $ref: '#/definitions/FiscalCode'
       name:
         type: string
       date_of_birth:
@@ -112,7 +80,6 @@ definitions:
         format: date
     required:
       - family_name
-      - fiscal_code
       - name
       - date_of_birth
   UserIdentity:
