@@ -27,23 +27,11 @@ jobs:
             displayName: 'Install Node.js'
             target: mycontainer
 
-          - script: |
-              npm install
-            displayName: 'npm install'
-            target: mycontainer
-
           - ${{ each prestep in parameters.requiredPreSteps }}:
             - ${{ each ps in prestep }}:
-                ${{ if startsWith(ps.value[0], 'npm') }}:
-                  echo ps.value[0]
-                  ${{ ps.key }}: ${{ ps.value }}
-                  target:
-                    container: mycontainer
-
-          - script: |
-              npm run build
-            displayName: 'npm build'
-            target: mycontainer
+                ${{ ps.key }}: ${{ ps.value }}
+                target:
+                  container: mycontainer
 
           - script: docker inspect mycontainer1 -f "{{json .NetworkSettings.Networks }}" | cut -c3-47
             target: host
