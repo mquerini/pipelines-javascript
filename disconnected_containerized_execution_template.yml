@@ -34,7 +34,9 @@ jobs:
 
           - ${{ each prestep in parameters.requiredPreSteps }}:
             - ${{ each ps in prestep }}:
-                ${{ ps.key }}: ${{ ps.value }}
+                ${{ if contains(ps.value, 'npm install') }}:
+                  ${{ ps.key }}: ${{ ps.value }}
+
               target:
                 container: mycontainer
 
