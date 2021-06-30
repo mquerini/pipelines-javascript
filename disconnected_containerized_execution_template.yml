@@ -28,8 +28,8 @@ jobs:
             target: mycontainer
 
           - ${{ each prestep in parameters.requiredPreSteps }}:
-            - ${{ each ps in prestep }}:
-                ${{ ps.key }}: ${{ ps.value }}
+              - ${{ each ps in prestep }}:
+                  ${{ ps.key }}: ${{ ps.value }}
                 target:
                   container: mycontainer
 
