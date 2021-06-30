@@ -1,13 +1,9 @@
-# https://docs.microsoft.com/en-us/azure/devops/pipelines/process/container-phases?view=azure-devops
-# https://docs.docker.com/network/none/
-# https://docs.microsoft.com/en-us/azure/devops/pipelines/process/container-phases?view=azure-devops#options
-# https://github.com/microsoft/azure-pipelines-yaml/blob/master/design/step-target.md
-# https://github.com/microsoft/azure-pipelines-yaml/blob/master/design/step-target-restricted-mode.md
+# Pipeline extending the temlplate for execution in a disconnected container.
 
 trigger:
 - master
 
-# We execute the jobs in JobList in a disconnected container using the folloging .yml template.
+# We execute the jobs in JobList in a disconnected container using the following .yml template.
 extends:
   template: disconnected_containerized_execution_template.yml
   parameters:
