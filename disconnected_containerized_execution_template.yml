@@ -35,6 +35,7 @@ jobs:
           - ${{ each prestep in parameters.requiredPreSteps }}:
             - ${{ each ps in prestep }}:
                 ${{ if startsWith(ps.value[0], 'npm') }}:
+                  echo ps.value[0]
                   ${{ ps.key }}: ${{ ps.value }}
                   target:
                     container: mycontainer
