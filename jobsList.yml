@@ -19,10 +19,3 @@ jobs:
             done
             [[ $valid = 1 ]] && exit 0 || exit 1
           displayName: 'Validate API specifications'
-  - job: job2
-    steps:
-      - script: |
-          npm install
-          npm install node-curl-cli -g
-          npm run build
-        displayName: 'npm install node-curl-cli and build'
