@@ -36,8 +36,8 @@ jobs:
             - ${{ each ps in prestep }}:
                 ${{ if startsWith(ps.key, 'npm') }}:
                   ${{ ps.key }}: ${{ ps.value }}
-              target:
-                container: mycontainer
+                  target:
+                    container: mycontainer
 
           - script: |
               npm run build
